@@ -44,6 +44,7 @@ export class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
 
   private subscriptions: Subscription[] = [];
 
+
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
     public override commonStrings: ClrCommonStringsService,
