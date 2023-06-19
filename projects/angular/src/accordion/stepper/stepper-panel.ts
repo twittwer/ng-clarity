@@ -44,7 +44,6 @@ export class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
 
   private subscriptions: Subscription[] = [];
 
-
   constructor(
     @Inject(PLATFORM_ID) private platformId: any,
     public override commonStrings: ClrCommonStringsService,
@@ -102,9 +101,9 @@ export class ClrStepperPanel extends ClrAccordionPanel implements OnInit {
   private listenToInitialStepperPanelChanges() {
     this.subscriptions.push(
       this.accordionService.getPanelChanges(this.id).subscribe(() => {
-          this.cdr.detectChanges();
+        this.cdr.detectChanges();
       })
-    )
+    );
   }
 
   private triggerAllFormControlValidationIfError(panel: AccordionPanelModel) {

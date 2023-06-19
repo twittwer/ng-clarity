@@ -4,14 +4,14 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ClrIfExpanded} from "@clr/angular";
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ClrIfExpanded } from '@clr/angular';
 
 @Component({
   templateUrl: 'stepper.demo.html',
   styleUrls: ['./stepper.demo.scss'],
-  providers: [ClrIfExpanded]
+  providers: [ClrIfExpanded],
 })
 export class StepperDemo {
   form: FormGroup;
@@ -59,11 +59,10 @@ export class StepperDemo {
   handleClick() {
     this.loading = true;
     // this.zone.runOutsideAngular(() => {
-      setTimeout(() => {
-        this.initialStep = 'address';
-        this.loading = false;
-
-      }, 200);
+    setTimeout(() => {
+      this.initialStep = this.initialStep === 'address' ? 'contact' : 'address';
+      this.loading = false;
+    }, 200);
     // });
   }
 
