@@ -39,12 +39,12 @@ export class ClrIfExpanded implements OnInit, OnDestroy {
     private container: ViewContainerRef,
     private el: ElementRef,
     private renderer: Renderer2,
-    private expand: IfExpandService
+    private expandService: IfExpandService
   ) {
     this._subscriptions.push(
-      expand.expandChange.subscribe(() => {
+      expandService.expandChange.subscribe(() => {
         this.updateView();
-        this.expandedChange.emit(this.expand.expanded);
+        this.expandedChange.emit(this.expandService.expanded);
       })
     );
   }
@@ -55,27 +55,27 @@ export class ClrIfExpanded implements OnInit, OnDestroy {
   }
   set expanded(value: boolean | string) {
     if (typeof value === 'boolean') {
-      this.expand.expanded = value;
+      this.expandService.expanded = value;
       this._expanded = value;
     }
   }
 
   ngOnInit() {
-    this.expand.expandable++;
+    this.expandService.expandable++;
     this.updateView();
   }
 
   ngOnDestroy() {
-    this.expand.expandable--;
+    this.expandService.expandable--;
     this._subscriptions.forEach((sub: Subscription) => sub.unsubscribe());
   }
 
   private updateView() {
-    if (this.expand.expanded && this.container.length !== 0) {
+    if (this.expandService.expanded && this.container.length !== 0) {
       return;
     }
     if (this.template) {
-      if (this.expand.expanded) {
+      if (this.expandService.expanded) {
         // Should we pass a context? I don't see anything useful to pass right now,
         // but we can come back to it in the future as a solution for additional features.
         this.container.createEmbeddedView(this.template);
@@ -89,7 +89,7 @@ export class ClrIfExpanded implements OnInit, OnDestroy {
     } else {
       try {
         // If we don't have a template ref, we fallback to a crude display: none for now.
-        if (this.expand.expanded) {
+        if (this.expandService.expanded) {
           this.renderer.setStyle(this.el.nativeElement, 'display', null);
         } else {
           this.renderer.setStyle(this.el.nativeElement, 'display', 'none');
