@@ -4,30 +4,25 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ClrIfExpanded} from "@clr/angular";
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ClrIfExpanded } from '@clr/angular';
 
 @Component({
   templateUrl: 'stepper.demo.html',
   styleUrls: ['./stepper.demo.scss'],
-  providers: [ClrIfExpanded]
+  providers: [ClrIfExpanded],
 })
 export class StepperDemo {
   form: FormGroup;
   expanded = {
     name: false,
-    contact: false,
+    contact: true,
     address: false,
     phone: false,
   };
 
-  expName = false;
-  expContact = false;
-  expAddress = false;
-  expPhone = false;
-
-  initialStep: string;
+  initialStep = 'contact';
   loading = false;
 
   protected readonly expand;
@@ -58,13 +53,13 @@ export class StepperDemo {
 
   handleClick() {
     this.loading = true;
-    // this.zone.runOutsideAngular(() => {
-      setTimeout(() => {
-        this.initialStep = 'address';
-        this.loading = false;
+    setTimeout(() => {
+      this.expanded[this.initialStep] = false;
+      this.initialStep = this.initialStep === 'address' ? 'phone' : 'address';
+      this.expanded[this.initialStep] = true;
 
-      }, 200);
-    // });
+      this.loading = false;
+    }, 200);
   }
 
   submit() {

@@ -64,6 +64,12 @@ export class ClrStepper implements OnInit, OnChanges, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
+    console.log('initial panel', this.initialPanel);
+    this.panels.forEach((panel, index) => {
+      const model = this.stepperService.accordion.panels[index];
+      panel.ifExpandService.expanded = model?.id === this.initialPanel;
+    });
+
     this.subscriptions.push(this.listenForDOMChanges());
   }
 

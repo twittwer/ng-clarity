@@ -56,7 +56,7 @@ export class ClrAccordionPanel implements OnInit, OnChanges {
   constructor(
     public commonStrings: ClrCommonStringsService,
     protected accordionService: AccordionService,
-    private ifExpandService: IfExpandService,
+    public ifExpandService: IfExpandService,
     protected cdr: ChangeDetectorRef
   ) {}
 
@@ -131,10 +131,6 @@ export class ClrAccordionPanel implements OnInit, OnChanges {
        * even that is used only into the Initial Lifecycle (ngOnInit).
        */
       this.panelOpen = panel.open;
-    }
-
-    if (panel.open) {
-      this.ifExpandService.expanded = true;
     }
   }
 }

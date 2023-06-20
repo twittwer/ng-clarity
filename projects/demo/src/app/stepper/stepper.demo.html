@@ -1,5 +1,5 @@
-<h1>{{ expanded.name  }}</h1>
-<h1>{{ expanded.contact  }}</h1>
+<h1>{{ expanded.name }}</h1>
+<h1>{{ expanded.contact }}</h1>
 <h1>{{ expanded.address }}</h1>
 <h1>{{ expanded.phone }}{{ expanded | json}}</h1>
 <button (click)="handleClick()">Click</button>
@@ -10,7 +10,7 @@
   (ngSubmit)="submit()"
   [clrInitialStep]="initialStep"
 >
-  <clr-stepper-panel formGroupName="name" >
+  <clr-stepper-panel formGroupName="name">
     <clr-step-title>Legal Name</clr-step-title>
     <clr-step-description>
       <span *ngIf="!expanded.name; else opened">Closed</span>
@@ -19,17 +19,13 @@
       <clr-input-container>
         <label>First Name</label>
         <input clrInput formControlName="first" />
-        <clr-control-error *clrIfError="'required'"
-        >First Name Required</clr-control-error
-        >
+        <clr-control-error *clrIfError="'required'">First Name Required</clr-control-error>
       </clr-input-container>
 
       <clr-input-container>
         <label>Last Name</label>
         <input clrInput formControlName="last" />
-        <clr-control-error *clrIfError="'required'"
-        >Last Name Required</clr-control-error
-        >
+        <clr-control-error *clrIfError="'required'">Last Name Required</clr-control-error>
       </clr-input-container>
 
       <button clrStepButton="next">next</button>
@@ -80,4 +76,4 @@
 </form>
 
 <ng-template #opened> Opened </ng-template>
-<ng-template #loadingTmp> Loading...      </ng-template>
+<ng-template #loadingTmp> Loading... </ng-template>

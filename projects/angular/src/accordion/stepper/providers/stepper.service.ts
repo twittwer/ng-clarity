@@ -16,7 +16,7 @@ export class StepperService extends AccordionService {
   readonly activeStep: Observable<string>;
   readonly panelsCompleted = this.getAllCompletedPanelChanges();
 
-  protected override accordion = new StepperModel();
+  override accordion = new StepperModel();
 
   private _activeStepChanges = new Subject<string>();
 
