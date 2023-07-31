@@ -63,8 +63,8 @@ const variants: Parameters[] = [
     clrAccordionPanelDisabled: false,
   },
   {
-    clrAccordionPanelOpen: true,
-    clrAccordionPanelDisabled: true,
+    clrAccordionPanelOpen: false,
+    clrAccordionPanelDisabled: false,
   },
 ];
 

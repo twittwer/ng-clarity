@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { ClrAccordion, ClrAccordionModule } from '@clr/angular';
+import { ClrAccordionModule } from '@clr/angular';
 import { Parameters } from '@storybook/addons';
 import { Story } from '@storybook/angular';
 
@@ -12,13 +12,20 @@ import { setupStorybook } from '../../helpers/setup-storybook.helpers';
 
 const defaultStory: Story = args => ({
   template: `
-    <clr-accordion [clrAccordionMultiPanel]="clrAccordionMultiPanel">
+    <clr-accordion>
       <clr-accordion-panel
         *ngFor="let _ of createArray(panelCount); let i = index"
-        [clrAccordionPanelOpen]="!!openIndices[i]"
+        [clrAccordionPanelOpen]="openIndex === i"
       >
-        <clr-accordion-title>{{title}} {{i + 1}}</clr-accordion-title>
-        <clr-accordion-content>{{content}} {{i + 1}}</clr-accordion-content>
+        <clr-accordion-title>Parent Title {{i + 1}}</clr-accordion-title>
+        <clr-accordion-content>
+          <clr-accordion>
+            <clr-accordion-panel [clrAccordionPanelOpen]="nestedOpenIndex === i">
+              <clr-accordion-title>Nested Title</clr-accordion-title>
+              <clr-accordion-content>Nested content</clr-accordion-content>
+            </clr-accordion-panel>
+          </clr-accordion>
+        </clr-accordion-content>
       </clr-accordion-panel>
     </clr-accordion>
   `,
@@ -26,46 +33,30 @@ const defaultStory: Story = args => ({
 });
 
 const defaultParameters: Parameters = {
-  title: 'Accordion/Accordion',
-  component: ClrAccordion,
+  title: 'Accordion/Nested Accordion',
   argTypes: {
-    // inputs
-    clrAccordionMultiPanel: { defaultValue: false, control: { type: 'boolean' } },
     // story helpers
-    openIndices: { control: { disable: true }, table: { disable: true } },
+    openIndex: { control: { disable: true }, table: { disable: true } },
+    nestedOpenIndex: { control: { disable: true }, table: { disable: true } },
     createArray: { control: { disable: true }, table: { disable: true } },
     panelCount: { control: { type: 'number', min: 1, max: 100 } },
   },
   args: {
     // story helpers
-    openIndices: [],
+    openIndex: undefined,
+    nestedOpenIndex: undefined,
     createArray: n => new Array(n),
     panelCount: 4,
-    title: 'Title',
-    content: 'Hello World!',
   },
 };
 
 const variants: Parameters[] = [
   {
-    clrAccordionMultiPanel: false,
-    panelCount: 4,
-    openIndices: [],
+    openIndex: 0,
   },
   {
-    clrAccordionMultiPanel: false,
-    panelCount: 4,
-    openIndices: [true],
-  },
-  {
-    clrAccordionMultiPanel: false,
-    panelCount: 4,
-    openIndices: [false, false, false, true],
-  },
-  {
-    clrAccordionMultiPanel: true,
-    panelCount: 4,
-    openIndices: [false, true, true, false],
+    openIndex: 0,
+    nestedOpenIndex: 0,
   },
 ];
 
