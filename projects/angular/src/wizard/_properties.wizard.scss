@@ -31,8 +31,9 @@
         #{variables.$clr_baselineRem_1px}
         #{variables.$clr_baselineRem_2px}
         #{variables.$clr_baselineRem_2px}
-        rgba(0, 0, 0, 0.2);
+        var(--clr-wizard-stepnav-border-color);
 
+      --clr-wizard-stepnav-link-font-size: #{variables.$clr_baselineRem_0_583};
       --clr-wizard-stepnav-link-line-height: #{variables.$clr_baselineRem_1};
       --clr-wizard-stepnav-item-padding: #{variables.$clr_baselineRem_0_25}
         0

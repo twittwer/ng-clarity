@@ -20,7 +20,8 @@
 | --clr-wizard-stepnav-active-border-radius      | Wizard active navigation element border radius                      |
 | --clr-wizard-stepnav-border-color              | Wizard navigation border color                                      |
 | --clr-wizard-box-shadow                        | Wizard highlight indication                                         |
-| --clr-wizard-stepnav-link-line-height          | Wizard avigation item line height                                   |
+| --clr-wizard-stepnav-link-font-size            | Wizard navigation item font size                                    |
+| --clr-wizard-stepnav-link-line-height          | Wizard navigation item line height                                  |
 | --clr-wizard-stepnav-item-padding              | Wizard navigation item padding                                      |
 | --clr-wizard-stepnav-padding                   | Wizard navigation padding                                           |
 | --clr-wizard-stepnav-link-padding              | Wizard navigation item button padding                               |
