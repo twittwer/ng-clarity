@@ -3,7 +3,7 @@
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
-@use '@cds/core/tokens/tokens';
+@use '@cds/core/tokens/tokens.scss';
 /* This shim file maps the custom properties of @clr/ui to Core tokens. Thus, it is only needed for apps currently dependent on @clr/ui and wanting to apply Core look and feel. */
 
 // Line height tokens are implemented as the smallest version in the figma specs but some
