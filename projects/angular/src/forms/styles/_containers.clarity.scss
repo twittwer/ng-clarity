@@ -105,7 +105,7 @@
       color: forms-variables.$clr-forms-valid-color;
       fill: forms-variables.$clr-forms-valid-color;
     }
-    .clr-subtext {
+    clr-control-success.clr-subtext {
       color: forms-variables.$clr-forms-valid-text-color;
     }
   }
@@ -115,7 +115,7 @@
       display: inline-block;
     }
 
-    .clr-subtext {
+    clr-control-error.clr-subtext {
       color: forms-variables.$clr-forms-invalid-text-color;
     }
   }
