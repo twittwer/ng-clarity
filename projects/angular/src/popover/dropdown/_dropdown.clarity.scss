@@ -125,30 +125,7 @@
 
       // Typography
       // Paragraph/SECONDARY-13-MD-exp
-      @include mixins.css-var(
-        font-weight,
-        clr-dropdown-header-font-weight,
-        dropdown-variables.$clr-dropdown-header-font-weight,
-        variables.$clr-use-custom-properties
-      );
-      @include mixins.css-var(
-        font-size,
-        clr-dropdown-header-font-size,
-        dropdown-variables.$clr-dropdown-header-font-size,
-        variables.$clr-use-custom-properties
-      );
-      @include mixins.css-var(
-        line-height,
-        clr-dropdown-header-line-height,
-        variables.$clr_baselineRem_0_75,
-        variables.$clr-use-custom-properties
-      );
-      @include mixins.css-var(
-        letter-spacing,
-        clr-dropdown-header-letter-spacing,
-        dropdown-variables.$clr-dropdown-header-letter-spacing,
-        variables.$clr-use-custom-properties
-      );
+      @include mixins.generate-typography-token('SECONDARY-13-MD-EXP');
 
       @include mixins.css-var(
         padding,
